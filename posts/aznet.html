@@ -1,0 +1,107 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <img src="../images/47881967_p0.jpg" style="width: 100%;">
+        <a href="../index.html">HOME</a>
+        <a href="https://codeforces.com/profile/tht2005/">CF</a>
+    </div>
+    <!---->
+
+    <div class="main-page">
+        <div class="post">
+            <div class="post-title">
+                <h1 class="post-title-name">AZNET</h1>
+            </div>
+            <hr style="width: 50px; color: white; background-color: white;">
+            <div class="post-content">
+                <div class="origin">
+                    <span style="color: white; font-weight: normal;">Nguồn:</span>
+                    <a class="prob-link" href="https://vn.spoj.com/problems/AZNET/"><u>https://vn.spoj.com/problems/AZNET/</u></a>
+                </div>
+                <p>
+                    Gọi $x$ và $y$ lần lượt là số cạnh loại A ít nhất, nhiều nhất được sử dụng trong tất cả các cây khung.
+                </p>
+                <p>
+                    <ul style="margin-left: 50px;">
+                        <li>
+                            Thêm tất cả các cạnh loại B vào đồ thị. Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $x$ là số cạnh loại A được thêm vào.
+                        </li>
+                        <li>
+                            Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $y$ là số cạnh được thêm vào.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    Tính chất quan trọng: Với mọi $i \in \left[ {x,y} \right]$, tồn tại một cây khung sử dụng đúng $i$ cạnh loại A. Chứng minh:
+                </p>
+                <p>
+                    <ul style="margin-left: 50px;">
+                        <li>
+                            Nếu $i = x$ hoặc $i = y$, luôn tồn tại cây khung thỏa mãn.
+                        </li>
+                        <li>
+                            Xét cây khung $T$ có đúng $i$ cạnh loại A. Ta tìm cách thêm một cạnh loại A không thuộc $T$ và xóa một cạnh loại B thuộc $T$ sao cho $T$ vẫn là cây (*). Thao tác (*) không thực hiện được khi xét mọi cạnh loại A không thuộc $T$, giả sử cạnh đang xét kề hai đỉnh $u$ và $v$, đường đi từ $u$ đến $v$ trong $T$ chỉ có các cạnh loại A (**). (**) tương đương với $i = y$.                    
+                        </li>
+                    </ul>       
+                </p>
+                <p>
+                    Ta cần tìm $i$ sao cho $i \in \left[ {x,y} \right]$ và $a_i + b_{n - 1 - i}$ đạt giá trị nhỏ nhất.
+                </p>
+                <p>
+                    Sau đó cần xây dựng một cây khung sử dụng đúng $i$ cạnh loại A. Đầu tiên ta tìm S là tập các cạnh loại A xuất hiện trong mọi cây khung: thêm hết cạnh loại B vào đồ thị, duyệt từng cạnh loại A, với mỗi cạnh nếu kết nối hai tplt khác nhau thì thêm vào đồ thị và kết nạp vào S.
+                </p>
+                <p>
+                    Cuối cùng, khởi tạo đồ thị mới chỉ gồm các cạnh thuộc tập S, thêm $\left( {i - \left| S \right|} \right)$ cạnh loại A và các cạnh loại B vào cho đủ $(n - 1)$ cạnh.                    
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

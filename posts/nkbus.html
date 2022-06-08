@@ -1,0 +1,80 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <img src="../images/47881967_p0.jpg" style="width: 100%;">
+        <a href="../index.html">HOME</a>
+        <a href="https://codeforces.com/profile/tht2005/">CF</a>
+    </div>
+    <!---->
+
+    <div class="main-page">
+        <div class="post">
+            <div class="post-title">
+                <h1 class="post-title-name">NKBUS</h1>
+            </div>
+            <hr style="width: 50px; color: white; background-color: white;">
+            <div class="post-content">
+                <div class="origin">
+                    <span style="color: white; font-weight: normal;">Nguồn:</span>
+                    <a class="prob-link" href="https://vn.spoj.com/problems/NKBUS/"><u>https://vn.spoj.com/problems/NKBUS/</u></a>
+                </div>
+
+                <p>Gọi $f_i$ là tổng thời gian tàu đi từ $1$ đến $i$ mà không cần chờ người nào.</p>
+
+                <p>Nếu chỉ cần đón 1 người ở điểm $i$, thời gian $t$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i\right)$.
+                Nếu cần đón 2 người ở điểm $i$, thời gian $t$ và ở điểm $j$, thời gian $t'$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i, t' - f_j\right)$. Chứng minh: Không mất tính tổng quát, giả sử $i \le j$. Gọi $a = \max\left(0, t - f_i\right), b = \max\left(0, t' - f_j\right)$. Nếu $a < b$ thì đến $i$ phải chờ $a$ đơn vị thời gian (đvtg), đến $j$ phải chờ $\left(b - a\right)$ (đvtg), tổng cộng là $a + \left(b - a\right) = b$ (đvtg). Nếu $a \ge b$ thì đến $i$ ta phải chờ $a$ (đvtg), đến $j$ ta phải chờ $\max\left(0, b - a\right) = 0$ (đvtg), tổng cộng là $a$ đvtg.
+                </p>
+                <p>Từ đó ta suy ra được thời gian tối thiểu để chở $m$ người là $f_{n + 1} + $ (thời gian chờ của người lâu nhất).
+                Vậy ta chọn $m$ người có thời gian chờ nhỏ nhất để chở.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

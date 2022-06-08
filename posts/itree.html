@@ -1,0 +1,111 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <img src="../images/47881967_p0.jpg" style="width: 100%;">
+        <a href="../index.html">HOME</a>
+        <a href="https://codeforces.com/profile/tht2005/">CF</a>
+    </div>
+    <!---->
+
+    <div class="main-page">
+        <div class="post">
+            <div class="post-title">
+                <h1 class="post-title-name">ITREE</h1>
+            </div>
+            <hr style="width: 50px; color: white; background-color: white;">
+            <div class="post-content">
+                <div class="origin">
+                    <span style="color: white; font-weight: normal;">Nguồn:</span>
+                    <a class="prob-link" href="https://vn.spoj.com/problems/ITREE/"><u>https://vn.spoj.com/problems/ITREE/</u></a>
+                </div>
+                <p>
+                    Tính chất quan trọng của bài toán: Luôn có một phương án tối ưu mà $a_i$ bằng $0$ hoặc $1$.
+                </p>
+                <p>
+                    Chứng minh: Xét đỉnh $v$ không phải là gốc hoặc lá. Gọi $p$ là cha của $v$; $u_1,u_2,...,u_k$ là các con trực tiếp của $v$.
+                </p>
+                <img src="../images/itree_1.png">
+                <p>
+                    Tổng trọng số của các cạnh kề $v$ là:
+                </p>
+                <p>
+                    $$C = w\left( {{a_p} - {a_v}} \right) + \mathop \sum \limits_{i = 1}^k {w_i}\left( {{a_v} - {a_{{u_i}}}} \right)$$
+                    $$C = w{a_p} - w{a_v} + \mathop \sum \limits_{i = 1}^k {w_i}{a_v} - \mathop \sum \limits_{i = 1}^k {w_i}{a_{{u_i}}}$$
+                    $$C = w{a_p} - \mathop \sum \limits_{i = 1}^k {w_i}{a_{{u_i}}} + {a_v}\left( {\mathop \sum \limits_{i = 1}^k {w_i} - w} \right)$$
+                </p>
+                <p>
+                    Không mất tính tổng quát, giả sử: ${a_{{u_1}}} \le \ldots \le {a_{{u_k}}}$.
+                </p>
+                <p>
+                    $ \to {a_{{u_k}}} \le {a_v} \le {a_p}$
+                </p>
+                <p>
+                    Nếu $\left( {\mathop \sum \limits_{i = 1}^k {w_i} - w} \right) > 0$ thì $a_v = a_{u_k}$ là tối ưu
+                </p>
+                <p>
+                    Ngược lại, $a_v = a_p$ là tối ưu.
+                </p>
+                <p>
+                    Cây được chia thành nhiều cây con liên thông có cùng nhãn $a_i$, mỗi cây con nén thành một đỉnh đại diện ta được cây mới, lặp lại thao tác trên đến khi nào mọi đỉnh đều có nhãn bằng $0$ hoặc $1$.
+                </p>
+                <p>
+                    Gọi $f\left(v\right)$ là chi phí nhỏ nhất của cây con gốc $v$ nếu $a_v = 1$.
+                </p>
+                <p>
+                    $$f\left( v \right) = \left\{ {\matrix{{ + \infty } & {{\rm{if\;v\;is\;leaf\;vertex}}}  \cr {\mathop \sum \limits_{u \in child\left( v \right)} {\rm{min}}\left( {f\left( u \right),w\left( {u,v} \right)} \right)} & {{\rm{otherwise}}}  \cr } } \right.$$
+                </p>
+                <p>
+                    Kết quả là $f\left(1\right)$.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

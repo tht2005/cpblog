@@ -1,0 +1,78 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <img src="../images/47881967_p0.jpg" style="width: 100%;">
+        <a href="../index.html">HOME</a>
+        <a href="https://codeforces.com/profile/tht2005/">CF</a>
+    </div>
+    <!---->
+
+    <div class="main-page">
+        <div class="post">
+            <div class="post-title">
+                <h1 class="post-title-name">QTREEV</h1>
+            </div>
+            <hr style="width: 50px; color: white; background-color: white;">
+            <div class="post-content">
+                <div class="origin">
+                    <span style="color: white; font-weight: normal;">Nguồn:</span>
+                    <a class="prob-link" href="https://vn.spoj.com/problems/QTREEV/"><u>https://vn.spoj.com/problems/QTREEV/</u></a>
+                </div>
+                <p>
+                    Ta có các nhận xét: $a \cdot b = c \leftrightarrow \log_{10} \left(a\right) +  \log_{10} \left(b\right) =  \log_{10} \left(c\right)$ và $a \le b \leftrightarrow \log_{10}\left(a\right) \le \log_{10}\left(b\right)$.
+                </p>
+                <p>
+                    Tính được hàm $f_v = {\log _{10}}\left( {P_v} \right)$ với công thức $f_v = {\log _{10}}\left( {a_v} \right) + \mathop {\max }\limits_{u \in child_v} f_u$. Từ đó tính được $P_v$: gọi $x$ là đỉnh thỏa $x\in child\left(v \right) $ và $f_x = \mathop {\max }\limits_{u \in child_v} f_u$ thì $P_v = a_v \cdot P_x$.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

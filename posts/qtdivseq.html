@@ -1,0 +1,91 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <img src="../images/47881967_p0.jpg" style="width: 100%;">
+        <a href="../index.html">HOME</a>
+        <a href="https://codeforces.com/profile/tht2005/">CF</a>
+    </div>
+    <!---->
+
+    <div class="main-page">
+        <div class="post">
+            <div class="post-title">
+                <h1 class="post-title-name">QTDIVSEQ</h1>
+            </div>
+            <hr style="width: 50px; color: white; background-color: white;">
+            <div class="post-content">
+                <div class="origin">
+                    <span style="color: white; font-weight: normal;">Nguồn:</span>
+                    <a class="prob-link" href="https://vn.spoj.com/problems/QTDIVSEQ/"><u>https://vn.spoj.com/problems/QTDIVSEQ</u></a>
+                </div>
+                <p>
+                    Gọi $s_i$ là tổng giá trị của $i$ món quà đầu.
+                </p>
+                <p>
+                    Nếu $s_n \mod k \ne 0$ thì kết quả là $0$, ngược lại ta xét hai trường hợp:
+                </p>
+                <p>
+                    <ul style="margin-left: 50px;">
+                        <li>
+                            Nếu $s_n = 0$ thì mỗi nhóm phải có tổng bằng 0 và nhóm cuối cùng phải kết thúc tại $n$. Gọi $z$ là số vị trí $i$ mà $1 \le i \le n$ và $s_i = 0$, kết quả là $\left( \matrix{{z - 1}\cr{k - 1}} \right)$.
+                        </li>
+                        <li>
+                            Nếu $s_n \ne 0$:
+                            Gọi $a = {s_n \over k}$, mỗi nhóm phải có tổng đúng bằng $a$. Ta thấy nếu $i$ là vị trí kết thúc của nhóm thứ $j$ thì $s_i = aj$.
+                            Ta duyệt tăng dần các vị trí $i$, gọi $f_k$ là số cách phân các đoạn từ $1$ đến $j \left(j < i\right)$ thành $k$ nhóm có tổng bằng $a$. Nếu $s_i = ak \left(k > 0\right)$ thì ta gán $f_k = f_k + f_{k - 1}$.
+                            Kết quả là $f_{k - 1}$ bởi vì ta cần chia dãy thành $k$ nhóm, nhóm cuối cùng kết thúc tại vị trí $n$.                            
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
