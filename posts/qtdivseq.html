@@ -45,45 +45,40 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">QTDIVSEQ</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/QTDIVSEQ/"><u>https://vn.spoj.com/problems/QTDIVSEQ</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">QTDIVSEQ</h1>
                 </div>
-                <p>
-                    Gọi $s_i$ là tổng giá trị của $i$ món quà đầu.
-                </p>
-                <p>
-                    Nếu $s_n \mod k \ne 0$ thì kết quả là $0$, ngược lại ta xét hai trường hợp:
-                </p>
-                <p>
-                    <ul style="margin-left: 50px;">
-                        <li>
-                            Nếu $s_n = 0$ thì mỗi nhóm phải có tổng bằng 0 và nhóm cuối cùng phải kết thúc tại $n$. Gọi $z$ là số vị trí $i$ mà $1 \le i \le n$ và $s_i = 0$, kết quả là $\left( \matrix{{z - 1}\cr{k - 1}} \right)$.
-                        </li>
-                        <li>
-                            Nếu $s_n \ne 0$:
-                            Gọi $a = {s_n \over k}$, mỗi nhóm phải có tổng đúng bằng $a$. Ta thấy nếu $i$ là vị trí kết thúc của nhóm thứ $j$ thì $s_i = aj$.
-                            Ta duyệt tăng dần các vị trí $i$, gọi $f_k$ là số cách phân các đoạn từ $1$ đến $j \left(j < i\right)$ thành $k$ nhóm có tổng bằng $a$. Nếu $s_i = ak \left(k > 0\right)$ thì ta gán $f_k = f_k + f_{k - 1}$.
-                            Kết quả là $f_{k - 1}$ bởi vì ta cần chia dãy thành $k$ nhóm, nhóm cuối cùng kết thúc tại vị trí $n$.                            
-                        </li>
-                    </ul>
-                </p>
-            </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/QTDIVSEQ/"><u>https://vn.spoj.com/problems/QTDIVSEQ</u></a>
+                    </div>
+                    <p>
+                        Gọi $s_i$ là tổng giá trị của $i$ món quà đầu.
+                    </p>
+                    <p>
+                        Nếu $s_n \mod k \ne 0$ thì kết quả là $0$, ngược lại ta xét hai trường hợp:
+                    </p>
+                    <p>
+                        <ul style="margin-left: 50px;">
+                            <li>
+                                Nếu $s_n = 0$ thì mỗi nhóm phải có tổng bằng 0 và nhóm cuối cùng phải kết thúc tại $n$. Gọi $z$ là số vị trí $i$ mà $1 \le i \le n$ và $s_i = 0$, kết quả là $\left( \matrix{{z - 1}\cr{k - 1}} \right)$.
+                            </li>
+                            <li>
+                                Nếu $s_n \ne 0$:
+                                Gọi $a = {s_n \over k}$, mỗi nhóm phải có tổng đúng bằng $a$. Ta thấy nếu $i$ là vị trí kết thúc của nhóm thứ $j$ thì $s_i = aj$.
+                                Ta duyệt tăng dần các vị trí $i$, gọi $f_k$ là số cách phân các đoạn từ $1$ đến $j \left(j < i\right)$ thành $k$ nhóm có tổng bằng $a$. Nếu $s_i = ak \left(k > 0\right)$ thì ta gán $f_k = f_k + f_{k - 1}$.
+                                Kết quả là $f_{k - 1}$ bởi vì ta cần chia dãy thành $k$ nhóm, nhóm cuối cùng kết thúc tại vị trí $n$.                            
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>    
         </div>
     </div>
 

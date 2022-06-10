@@ -45,74 +45,69 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">HBTLCA</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/HBTLCA/"><u>https://vn.spoj.com/problems/HBTLCA/</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">HBTLCA</h1>
                 </div>
-                <p>
-                    Đề bài: Cho một cây $n$ đỉnh ban đầu có gốc là $1$. Thực hiện 2 loại truy vấn:
-                </p>
-                <ol style="margin-left: 50px">
-                    <li>
-                        "! r": chọn $r$ làm gốc.
-                    </li>
-                    <li>
-                        "? u v": tìm $lca(u, v)$.
-                    </li>
-                </ol>
-                <p>
-                    Hàm $lca(u, v)$ trả về tổ tiên chung gần nhất của $u$ và $v$ trong trường hợp gốc là 1.
-                </p>
-                <p>
-                    Với mỗi truy vấn $u$ $v$, gọi $x = lca(u, v)$, $y = lca(u, r)$, $z = lca(v, r)$.
-                </p>
-                <p>
-                    Ta xét 3 trường hợp:
-                </p>
-                <p>
-                    <ol style="margin-left: 50px;">
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/HBTLCA/"><u>https://vn.spoj.com/problems/HBTLCA/</u></a>
+                    </div>
+                    <p>
+                        Đề bài: Cho một cây $n$ đỉnh ban đầu có gốc là $1$. Thực hiện 2 loại truy vấn:
+                    </p>
+                    <ol style="margin-left: 50px">
                         <li>
-                            $u$, $v$ đều thuộc cây con gốc $r$
-                        </li>
-                        <img src="../images/hbtlca_1.png">
-                        <li>
-                            $u$, $v$ đều nằm ngoài cây con gốc $r$
-                            <ul style="margin-left: 50px;">
-                                <li>
-                                    $r$ nằm trong cây con gốc $x$
-                                </li>
-                                <img src="../images/hbtlca_2.png">
-                                <li>
-                                    $r$ nằm ngoài cây con gốc $x$
-                                </li>
-                                <img src="../images/hbtlca_3.png">
-                            </ul>
+                            "! r": chọn $r$ làm gốc.
                         </li>
                         <li>
-                            $u$ nằm ngoài, $v$ nằm trong cây con gốc $r$
+                            "? u v": tìm $lca(u, v)$.
                         </li>
-                        <img src="../images/hbtlca_4.png">
                     </ol>
-                </p>
-                <p>
-                    Ta thấy trong mọi trường hợp, trong ba đỉnh $x$, $y$, $z$ luôn có một cặp giống nhau, đỉnh còn lại chính là kết quả cần tìm.
-                </p>
-            </div>
+                    <p>
+                        Hàm $lca(u, v)$ trả về tổ tiên chung gần nhất của $u$ và $v$ trong trường hợp gốc là 1.
+                    </p>
+                    <p>
+                        Với mỗi truy vấn $u$ $v$, gọi $x = lca(u, v)$, $y = lca(u, r)$, $z = lca(v, r)$.
+                    </p>
+                    <p>
+                        Ta xét 3 trường hợp:
+                    </p>
+                    <p>
+                        <ol style="margin-left: 50px;">
+                            <li>
+                                $u$, $v$ đều thuộc cây con gốc $r$
+                            </li>
+                            <img src="../images/hbtlca_1.png">
+                            <li>
+                                $u$, $v$ đều nằm ngoài cây con gốc $r$
+                                <ul style="margin-left: 50px;">
+                                    <li>
+                                        $r$ nằm trong cây con gốc $x$
+                                    </li>
+                                    <img src="../images/hbtlca_2.png">
+                                    <li>
+                                        $r$ nằm ngoài cây con gốc $x$
+                                    </li>
+                                    <img src="../images/hbtlca_3.png">
+                                </ul>
+                            </li>
+                            <li>
+                                $u$ nằm ngoài, $v$ nằm trong cây con gốc $r$
+                            </li>
+                            <img src="../images/hbtlca_4.png">
+                        </ol>
+                    </p>
+                    <p>
+                        Ta thấy trong mọi trường hợp, trong ba đỉnh $x$, $y$, $z$ luôn có một cặp giống nhau, đỉnh còn lại chính là kết quả cần tìm.
+                    </p>
+                </div>
+            </div>    
         </div>
     </div>
 

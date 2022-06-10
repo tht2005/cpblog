@@ -45,51 +45,46 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">TREASRE</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/TREASRE/"><u>https://vn.spoj.com/problems/TREASRE/</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">TREASRE</h1>
                 </div>
-                <p>
-                    Đầu tiên ta xoay hình tam giác sang trái $45^{\circ}$.
-                </p>
+                <hr style="width: 50px; color: white; background-color: white;">
 
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red";>1</span></div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red";>2 3</span></div>
-                <div>&nbsp;&nbsp;<span style="color: red";>4 5</span> 6</div>
-                <div>7 <span style="color: red";>8</span> 9 10</div>
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/TREASRE/"><u>https://vn.spoj.com/problems/TREASRE/</u></a>
+                    </div>
+                    <p>
+                        Đầu tiên ta xoay hình tam giác sang trái $45^{\circ}$.
+                    </p>
 
-                <div style="height: 30px;"></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red";>1</span></div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red";>2 3</span></div>
+                    <div>&nbsp;&nbsp;<span style="color: red";>4 5</span> 6</div>
+                    <div>7 <span style="color: red";>8</span> 9 10</div>
 
-                <div><span style="color: red;">1 3</span> 6 10</div>
-                <div><span style="color: red;">2 5</span> 9</div>
-                <div><span style="color: red;">4 8</span></div>
-                <div>7</div>
-                
-                <p>
-                    Vậy điều kiện để chọn được rương $\left( i, j \right)$ là phải chọn tất cả các rương $\left(x, y\right)$ mà $x \le i$ và $y \le j$.
-                    $\rightarrow$ Nếu chọn $j$ rương đầu ở hàng $i$ thì tại hàng $i - 1$ phải chọn không ít hơn $j$ rương đầu.                    
-                </p>
-                <p>
-                    Gọi $f\left(i, j\right)$ là tổng lớn nhất có thể đạt được nếu chọn không ít hơn $j$ rương đầu tại hàng $i$.
-                    $$f\left(i, j\right) = \max\left( f\left(i, j + 1\right),  f\left(i - 1, j\right) + \sum\limits_{k=1}^{j}{a_{i, k}} \right)$$                    
-                </p>
-            </div>
+                    <div style="height: 30px;"></div>
+
+                    <div><span style="color: red;">1 3</span> 6 10</div>
+                    <div><span style="color: red;">2 5</span> 9</div>
+                    <div><span style="color: red;">4 8</span></div>
+                    <div>7</div>
+                    
+                    <p>
+                        Vậy điều kiện để chọn được rương $\left( i, j \right)$ là phải chọn tất cả các rương $\left(x, y\right)$ mà $x \le i$ và $y \le j$.
+                        $\rightarrow$ Nếu chọn $j$ rương đầu ở hàng $i$ thì tại hàng $i - 1$ phải chọn không ít hơn $j$ rương đầu.                    
+                    </p>
+                    <p>
+                        Gọi $f\left(i, j\right)$ là tổng lớn nhất có thể đạt được nếu chọn không ít hơn $j$ rương đầu tại hàng $i$.
+                        $$f\left(i, j\right) = \max\left( f\left(i, j + 1\right),  f\left(i - 1, j\right) + \sum\limits_{k=1}^{j}{a_{i, k}} \right)$$                    
+                    </p>
+                </div>
+            </div>    
         </div>
     </div>
 

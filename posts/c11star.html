@@ -45,38 +45,33 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">C11STAR</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/C11STAR/"><u>https://vn.spoj.com/problems/C11STAR/</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">C11STAR</h1>
                 </div>
-                <img src="../images/c11star_1.png" style="display: block;">
-                <p>
-                    Ta sẽ duyệt mọi cặp C, D rồi đếm số cặp A, B thỏa mãn.
-                </p>
-                <p>
-                    Thứ tự duyệt là tăng dần theo giá trị $(i + j)$ (để đảm bảo duyệt A, B trước C, D).
-                </p>
-                <p>
-                    Gọi $f[k][i][j]$ là số cặp D, C thỏa mãn $i_D - j_D = k, i_C - i_D = j_C - j_D = i, a_{i_D j_D} = a_{i_C j_C} = j$. Khi đang xét 2 đỉnh D, C, nếu $a_{i_D j_D} \ne '.'$ và $a_{i_D j_D} = a_{i_C j_C}$ thì cộng $f[k][i][j]$ vào kết quả và tăng $f[k][i][j]$ lên 1.                    
-                </p>
-            </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/C11STAR/"><u>https://vn.spoj.com/problems/C11STAR/</u></a>
+                    </div>
+                    <img src="../images/c11star_1.png" style="display: block;">
+                    <p>
+                        Ta sẽ duyệt mọi cặp C, D rồi đếm số cặp A, B thỏa mãn.
+                    </p>
+                    <p>
+                        Thứ tự duyệt là tăng dần theo giá trị $(i + j)$ (để đảm bảo duyệt A, B trước C, D).
+                    </p>
+                    <p>
+                        Gọi $f[k][i][j]$ là số cặp D, C thỏa mãn $i_D - j_D = k, i_C - i_D = j_C - j_D = i, a_{i_D j_D} = a_{i_C j_C} = j$. Khi đang xét 2 đỉnh D, C, nếu $a_{i_D j_D} \ne '.'$ và $a_{i_D j_D} = a_{i_C j_C}$ thì cộng $f[k][i][j]$ vào kết quả và tăng $f[k][i][j]$ lên 1.                    
+                    </p>
+                </div>
+            </div>    
         </div>
     </div>
-
+    
 </body>
 </html>

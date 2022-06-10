@@ -45,36 +45,31 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">NKBUS</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/NKBUS/"><u>https://vn.spoj.com/problems/NKBUS/</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">NKBUS</h1>
                 </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/NKBUS/"><u>https://vn.spoj.com/problems/NKBUS/</u></a>
+                    </div>
 
-                <p>Gọi $f_i$ là tổng thời gian tàu đi từ $1$ đến $i$ mà không cần chờ người nào.</p>
+                    <p>Gọi $f_i$ là tổng thời gian tàu đi từ $1$ đến $i$ mà không cần chờ người nào.</p>
 
-                <p>Nếu chỉ cần đón 1 người ở điểm $i$, thời gian $t$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i\right)$.
-                Nếu cần đón 2 người ở điểm $i$, thời gian $t$ và ở điểm $j$, thời gian $t'$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i, t' - f_j\right)$. Chứng minh: Không mất tính tổng quát, giả sử $i \le j$. Gọi $a = \max\left(0, t - f_i\right), b = \max\left(0, t' - f_j\right)$. Nếu $a < b$ thì đến $i$ phải chờ $a$ đơn vị thời gian (đvtg), đến $j$ phải chờ $\left(b - a\right)$ (đvtg), tổng cộng là $a + \left(b - a\right) = b$ (đvtg). Nếu $a \ge b$ thì đến $i$ ta phải chờ $a$ (đvtg), đến $j$ ta phải chờ $\max\left(0, b - a\right) = 0$ (đvtg), tổng cộng là $a$ đvtg.
-                </p>
-                <p>Từ đó ta suy ra được thời gian tối thiểu để chở $m$ người là $f_{n + 1} + $ (thời gian chờ của người lâu nhất).
-                Vậy ta chọn $m$ người có thời gian chờ nhỏ nhất để chở.</p>
-            </div>
+                    <p>Nếu chỉ cần đón 1 người ở điểm $i$, thời gian $t$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i\right)$.
+                    Nếu cần đón 2 người ở điểm $i$, thời gian $t$ và ở điểm $j$, thời gian $t'$ thì chi phí là $f_{n + 1} + \max\left(0, t - f_i, t' - f_j\right)$. Chứng minh: Không mất tính tổng quát, giả sử $i \le j$. Gọi $a = \max\left(0, t - f_i\right), b = \max\left(0, t' - f_j\right)$. Nếu $a < b$ thì đến $i$ phải chờ $a$ đơn vị thời gian (đvtg), đến $j$ phải chờ $\left(b - a\right)$ (đvtg), tổng cộng là $a + \left(b - a\right) = b$ (đvtg). Nếu $a \ge b$ thì đến $i$ ta phải chờ $a$ (đvtg), đến $j$ ta phải chờ $\max\left(0, b - a\right) = 0$ (đvtg), tổng cộng là $a$ đvtg.
+                    </p>
+                    <p>Từ đó ta suy ra được thời gian tối thiểu để chở $m$ người là $f_{n + 1} + $ (thời gian chờ của người lâu nhất).
+                    Vậy ta chọn $m$ người có thời gian chờ nhỏ nhất để chở.</p>
+                </div>
+            </div>    
         </div>
     </div>
-
+    
 </body>
 </html>

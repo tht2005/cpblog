@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My music player</title>
+</head>
+<body>
+
+    <div class="music-player">
+        <!--CSS-->
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            .music-player {
+                width: 250px;
+                height: 177px;
+                background-color: white;
+            }
+
+            .dashboard {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+
+            .name-box {
+                font-family: sans-serif;
+                font-weight: 300;
+                padding: 10px 0px 10px 0px;
+            }
+
+            .progress-bar-box {
+                width: 100%;
+                padding: 0px 10px 0px 10px;
+            }
+            .progress-bar {
+                width: inherit;
+            }
+    
+            .control-box {
+                padding: 0;
+                margin: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                background-color: rgba(128, 128, 128, 0.436);
+                border-radius: 10px;
+            }
+            .btn {
+                padding: 10px 5px 5px 5px;
+                margin: 0;
+            }
+            .btn img {
+                width: 20px;
+            }
+        </style>
+        <!---->
+
+        <div class="dashboard">
+            <div class="header">
+                <h2 style="text-align: center;" class="name-box">
+                    Name
+                </h2>
+            </div>
+            <div class="progress-bar-box">
+                <input type="range" min="0" max="100" value="0" class="progress-bar">
+            </div>
+            <div class="control-area">
+                <div class="control-box">
+                    <div class="btn btn-loop">
+                        <img src="icons/loop_off.png">
+                    </div>
+                    <div class="btn btn-back">
+                        <img src="icons/prev.png">
+                    </div>
+                    <div class="btn btn-play">
+                        <img src="icons/play.png">
+                    </div>
+                    <div class="btn btn-next">
+                        <img src="icons/next.png">
+                    </div>
+                    <div class="btn btn-rand">
+                        <img src="icons/rand_off.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!---->
+        <audio class="mp3-player" type="audio"></audio>
+        <script>
+            const $ = document.querySelector.bind(document)
+            const $$ = document.querySelectorAll.bind(document)
+            
+            const audio = $(".mp3-player")
+            const loopbtn = $(".btn-loop")
+            const backbtn = $(".btn-back")
+            const playbtn = $(".btn-play")
+            const nextbtn = $(".btn-next")
+            const randbtn = $(".btn-rand")
+            const namebox = $(".name-box")
+            const progressbar = $(".progress-bar")
+
+            const app = {
+                curIndex: 0,
+                isPlaying: false,
+                isLoop: false,
+                isRandom: false,
+                songs: [
+                    {
+                        name: 'ReAliZe',
+                        path: "audio/ReAliZe.flac",
+                    },
+                    {
+                        name: '”Burial” as Barcarolle',
+                        path: 'audio/”burial” as Barcarolle.mp3',
+                    },
+                    {
+                        name: 'Brave Song',
+                        path: "audio/Brave Song.mp3",
+                    },
+                    {
+                        name: 'Evening breeze',
+                        path: "audio/evening breeze.mp3",
+                    },
+                    {
+                        name: "Girl's hop",
+                        path: "audio/girl's hop.mp3",
+                    },
+                    {
+                        name: 'Ichiban no Takaramono',
+                        path: "audio/Ichiban no Takaramono.mp3",
+                    },
+                    {
+                        name: 'Memory',
+                        path: "audio/memory.mp3",
+                    },
+                    {
+                        name: 'My Soul, Your Beats!',
+                        path: "audio/My Soul, Your Beats!.mp3",
+                    },
+                    {
+                        name: 'Theme of SSS',
+                        path: "audio/theme of SSS.mp3",
+                    },
+                ],
+                chooseSong: function(index) {
+                    this.curIndex = index
+                    namebox.textContent = this.songs[index].name
+                    audio.src = this.songs[index].path
+
+                    console.log(audio)
+                    console.log('music chosen!. index=' + index)
+                },
+                chooseRandomSong: function() {
+                    let index
+                    do {
+                        index = Math.floor(Math.random() * this.songs.length)
+                    } while(index == this.curIndex)
+                    this.chooseSong(index)
+                },
+                choosePrevSong: function() {
+                    this.chooseSong((this.curIndex == 0) ? (this.songs.length - 1) : (this.curIndex - 1))
+                },
+                chooseNextSong: function() {
+                    this.chooseSong((this.curIndex + 1 == this.songs.length) ? 0 : this.curIndex + 1)
+                },
+                handleEvents: function() {
+                    const thisapp = this;
+
+                    playbtn.onclick = function() {
+                        if(thisapp.isPlaying) {
+                            audio.pause()
+                        }
+                        else {
+                            audio.play()
+                        }
+                    };
+
+                    backbtn.onclick = function() {
+                        if(thisapp.isLoop) {
+                            audio.load()
+                        }
+                        else if(thisapp.isRandom) {
+                            thisapp.chooseRandomSong()
+                        }
+                        else {
+                            thisapp.choosePrevSong()
+                        }
+                        audio.play()
+                    };
+                    nextbtn.onclick = function() {
+                        if(thisapp.isLoop) {
+                            audio.load()
+                        }
+                        else if(thisapp.isRandom) {
+                            thisapp.chooseRandomSong()
+                        }
+                        else {
+                            thisapp.chooseNextSong()
+                        }
+                        audio.play()
+                    };
+
+                    loopbtn.onclick = function() {
+                        if(thisapp.isLoop) {
+                            thisapp.isLoop = false
+                            loopbtn.children[0].src = "icons/loop_off.png"
+                        }
+                        else {
+                            thisapp.isLoop = true
+                            loopbtn.children[0].src = "icons/loop_on.png"
+                        }
+                    };
+                    randbtn.onclick = function() {
+                        if(thisapp.isRandom) {
+                            thisapp.isRandom = false
+                            randbtn.children[0].src = "icons/rand_off.png"
+                        }
+                        else {
+                            thisapp.isRandom = true
+                            randbtn.children[0].src = "icons/rand_on.png"
+                        }
+                    };
+
+                    backbtn.onmouseover = function() {
+                        backbtn.children[0].src = "icons/prev_hover.png"
+                    };
+                    backbtn.onmouseout = function() {
+                        backbtn.children[0].src = "icons/prev.png"
+                    };
+
+                    nextbtn.onmouseover = function() {
+                        nextbtn.children[0].src = "icons/next_hover.png"
+                    };
+                    nextbtn.onmouseout = function() {
+                        nextbtn.children[0].src = "icons/next.png"
+                    };
+
+                    playbtn.onmouseover = function() {
+                        if(thisapp.isPlaying) {
+                            playbtn.children[0].src = "icons/play.png"
+                        }
+                        else {
+                            playbtn.children[0].src = "icons/pause.png"
+                        }
+                    };
+                    playbtn.onmouseout = function() {
+                        if(thisapp.isPlaying) {
+                            playbtn.children[0].src = "icons/pause.png"
+                        }
+                        else {
+                            playbtn.children[0].src = "icons/play.png"
+                        }
+                    };
+
+                    loopbtn.onmouseover = function() {
+                        if(thisapp.isLoop) {
+                            loopbtn.children[0].src = "icons/loop_off.png"
+                        }
+                        else {
+                            loopbtn.children[0].src = "icons/loop_on.png"
+                        }
+                    };
+                    loopbtn.onmouseout = function() {
+                        if(thisapp.isLoop) {
+                            loopbtn.children[0].src = "icons/loop_on.png"
+                        }
+                        else {
+                            loopbtn.children[0].src = "icons/loop_off.png"
+                        }
+                    };
+
+                    randbtn.onmouseover = function() {
+                        if(thisapp.isRandom) {
+                            randbtn.children[0].src = "icons/rand_off.png"
+                        }
+                        else {
+                            randbtn.children[0].src = "icons/rand_on.png"
+                        }
+                    };
+                    randbtn.onmouseout = function() {
+                        if(thisapp.isRandom) {
+                            randbtn.children[0].src = "icons/rand_on.png"
+                        }
+                        else {
+                            randbtn.children[0].src = "icons/rand_off.png"
+                        }
+                    };
+
+                    audio.onplay = function() {
+                        thisapp.isPlaying = true
+                        playbtn.children[0].src = "icons/pause.png"
+                    };
+                    audio.onpause = function() {
+                        thisapp.isPlaying = false
+                        playbtn.children[0].src = "icons/play.png"
+                    }
+                    audio.onended = function() {
+                        nextbtn.click()
+                    },
+
+                    progressbar.onchange = function() {
+                        audio.currentTime = progressbar.value / progressbar.max * audio.duration;
+                    }
+                    audio.ontimeupdate = function() {
+                        progressbar.value = audio.currentTime / audio.duration * progressbar.max;
+                    }
+                },
+                start: function() {
+                    this.chooseRandomSong()
+                    this.handleEvents()
+                },
+            }
+            app.start()
+        </script>
+        <!---->
+        
+    </div>
+
+</body>
+</html>

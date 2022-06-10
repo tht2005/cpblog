@@ -45,61 +45,56 @@
     <!---->
 </head>
 <body>
-    <!--Sidebar-->
-    <div class="sidebar">
-        <img src="../images/47881967_p0.jpg" style="width: 100%;">
-        <a href="../index.html">HOME</a>
-        <a href="https://codeforces.com/profile/tht2005/">CF</a>
-    </div>
-    <!---->
 
-    <div class="main-page">
-        <div class="post">
-            <div class="post-title">
-                <h1 class="post-title-name">AZNET</h1>
-            </div>
-            <hr style="width: 50px; color: white; background-color: white;">
-            <div class="post-content">
-                <div class="origin">
-                    <span style="color: white; font-weight: normal;">Nguồn:</span>
-                    <a class="prob-link" href="https://vn.spoj.com/problems/AZNET/"><u>https://vn.spoj.com/problems/AZNET/</u></a>
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">AZNET</h1>
                 </div>
-                <p>
-                    Gọi $x$ và $y$ lần lượt là số cạnh loại A ít nhất, nhiều nhất được sử dụng trong tất cả các cây khung.
-                </p>
-                <p>
-                    <ul style="margin-left: 50px;">
-                        <li>
-                            Thêm tất cả các cạnh loại B vào đồ thị. Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $x$ là số cạnh loại A được thêm vào.
-                        </li>
-                        <li>
-                            Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $y$ là số cạnh được thêm vào.
-                        </li>
-                    </ul>
-                </p>
-                <p>
-                    Tính chất quan trọng: Với mọi $i \in \left[ {x,y} \right]$, tồn tại một cây khung sử dụng đúng $i$ cạnh loại A. Chứng minh:
-                </p>
-                <p>
-                    <ul style="margin-left: 50px;">
-                        <li>
-                            Nếu $i = x$ hoặc $i = y$, luôn tồn tại cây khung thỏa mãn.
-                        </li>
-                        <li>
-                            Xét cây khung $T$ có đúng $i$ cạnh loại A. Ta tìm cách thêm một cạnh loại A không thuộc $T$ và xóa một cạnh loại B thuộc $T$ sao cho $T$ vẫn là cây (*). Thao tác (*) không thực hiện được khi xét mọi cạnh loại A không thuộc $T$, giả sử cạnh đang xét kề hai đỉnh $u$ và $v$, đường đi từ $u$ đến $v$ trong $T$ chỉ có các cạnh loại A (**). (**) tương đương với $i = y$.                    
-                        </li>
-                    </ul>       
-                </p>
-                <p>
-                    Ta cần tìm $i$ sao cho $i \in \left[ {x,y} \right]$ và $a_i + b_{n - 1 - i}$ đạt giá trị nhỏ nhất.
-                </p>
-                <p>
-                    Sau đó cần xây dựng một cây khung sử dụng đúng $i$ cạnh loại A. Đầu tiên ta tìm S là tập các cạnh loại A xuất hiện trong mọi cây khung: thêm hết cạnh loại B vào đồ thị, duyệt từng cạnh loại A, với mỗi cạnh nếu kết nối hai tplt khác nhau thì thêm vào đồ thị và kết nạp vào S.
-                </p>
-                <p>
-                    Cuối cùng, khởi tạo đồ thị mới chỉ gồm các cạnh thuộc tập S, thêm $\left( {i - \left| S \right|} \right)$ cạnh loại A và các cạnh loại B vào cho đủ $(n - 1)$ cạnh.                    
-                </p>
-            </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/AZNET/"><u>https://vn.spoj.com/problems/AZNET/</u></a>
+                    </div>
+                    <p>
+                        Gọi $x$ và $y$ lần lượt là số cạnh loại A ít nhất, nhiều nhất được sử dụng trong tất cả các cây khung.
+                    </p>
+                    <p>
+                        <ul style="margin-left: 50px;">
+                            <li>
+                                Thêm tất cả các cạnh loại B vào đồ thị. Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $x$ là số cạnh loại A được thêm vào.
+                            </li>
+                            <li>
+                                Duyệt mọi cạnh loại A, nếu ghép cạnh hiện tại làm giảm số tplt thì mới ghép. $y$ là số cạnh được thêm vào.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Tính chất quan trọng: Với mọi $i \in \left[ {x,y} \right]$, tồn tại một cây khung sử dụng đúng $i$ cạnh loại A. Chứng minh:
+                    </p>
+                    <p>
+                        <ul style="margin-left: 50px;">
+                            <li>
+                                Nếu $i = x$ hoặc $i = y$, luôn tồn tại cây khung thỏa mãn.
+                            </li>
+                            <li>
+                                Xét cây khung $T$ có đúng $i$ cạnh loại A. Ta tìm cách thêm một cạnh loại A không thuộc $T$ và xóa một cạnh loại B thuộc $T$ sao cho $T$ vẫn là cây (*). Thao tác (*) không thực hiện được khi xét mọi cạnh loại A không thuộc $T$, giả sử cạnh đang xét kề hai đỉnh $u$ và $v$, đường đi từ $u$ đến $v$ trong $T$ chỉ có các cạnh loại A (**). (**) tương đương với $i = y$.                    
+                            </li>
+                        </ul>       
+                    </p>
+                    <p>
+                        Ta cần tìm $i$ sao cho $i \in \left[ {x,y} \right]$ và $a_i + b_{n - 1 - i}$ đạt giá trị nhỏ nhất.
+                    </p>
+                    <p>
+                        Sau đó cần xây dựng một cây khung sử dụng đúng $i$ cạnh loại A. Đầu tiên ta tìm S là tập các cạnh loại A xuất hiện trong mọi cây khung: thêm hết cạnh loại B vào đồ thị, duyệt từng cạnh loại A, với mỗi cạnh nếu kết nối hai tplt khác nhau thì thêm vào đồ thị và kết nạp vào S.
+                    </p>
+                    <p>
+                        Cuối cùng, khởi tạo đồ thị mới chỉ gồm các cạnh thuộc tập S, thêm $\left( {i - \left| S \right|} \right)$ cạnh loại A và các cạnh loại B vào cho đủ $(n - 1)$ cạnh.                    
+                    </p>
+                </div>
+            </div>    
         </div>
     </div>
 
