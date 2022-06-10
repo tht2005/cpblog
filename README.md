@@ -1,1 +1,1 @@
-# about some CP problems's solution
+# let's solve some spoj and vnoj problems
