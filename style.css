@@ -93,7 +93,11 @@
 
 
 .post {
-    padding: 100px 250px 0px 200px;
+    margin: 0;
+    padding-top: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 0;
 }
 .post-title {
     margin-bottom: 10px;
@@ -102,11 +106,9 @@
     color: white;
 }
 
-.post-content {
+.post-content * {
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-}
-.post-content * {
     margin: 20px 0px 20px 0px;
 }
 .post-content :not(.origin) {

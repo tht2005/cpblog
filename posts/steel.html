@@ -1,0 +1,87 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">STEEL</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/STEEL/"><u>https://vn.spoj.com/problems/STEEL/</u></a>
+                    </div>
+                    <p>
+                        Bài toán tương đương: Cho \(m\) công việc, mỗi việc có thể tốn \(w_i\) thời gian để hoàn thành.
+                        Nếu việc \(j\) đã hoàn thành thì ta có thể hoàn thành việc \(i\) tốn \(c_{i, j}\) thời gian. Đưa
+                        ra tổng thời gian nhỏ nhất có thể để hoàn thành cả \(m\) công việc.
+                    </p>
+                    <p>
+                        Phát biểu lại bài toán: Cho một đồ thị gồm \(m\) đỉnh, mỗi đỉnh có thể chọn làm đỉnh đặc biệt hoặc
+                        đỉnh thường. Xét đỉnh \(i\), nếu chọn \(i\) làm đỉnh đặc biệt thì tốn chi phí \(w_i\), nếu chọn \(i\)
+                        làm đỉnh thường thì phải chọn một đỉnh \(j\) và thêm cung \(\left(i, j\right)\) vào đồ thị với chi phí
+                        \(c_{i,j}\). Đồ thị tạo ra phải đảm bảo mỗi đỉnh phải có đường đi đến một đỉnh đặc biệt. Đưa ra chi
+                        phí nhỏ nhất có thể.
+                    </p>
+                    <p>
+                        Bài toán trên có thể được giải bằng thuật toán Prim. Ban đầu mỗi đỉnh là một cây khung với chi
+                        phí \(w_i\), sau khi thực hiện thuật toán ta được kết quả tối ưu.
+                    </p>
+                    <p>
+                        \(w_i\) là độ dài của nhát cắt thứ \(i\). \(c_{i,j}\) là độ dài của
+                        nhát cắt thứ \(i\) sau khi cắt nhát thứ \(j\).
+                    </p>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+</body>
+</html>
