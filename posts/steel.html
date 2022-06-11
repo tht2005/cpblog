@@ -59,24 +59,31 @@
                         <a class="prob-link" href="https://vn.spoj.com/problems/STEEL/"><u>https://vn.spoj.com/problems/STEEL/</u></a>
                     </div>
                     <p>
-                        Bài toán tương đương: Cho \(m\) công việc, mỗi việc có thể tốn \(w_i\) thời gian để hoàn thành.
-                        Nếu việc \(j\) đã hoàn thành thì ta có thể hoàn thành việc \(i\) tốn \(c_{i, j}\) thời gian. Đưa
-                        ra tổng thời gian nhỏ nhất có thể để hoàn thành cả \(m\) công việc.
+                        Gọi \(A\) là tấm thép còn \(B\) là khuôn thép, tức là \(A\) chứa \(B\) và
+                        cần cắt \(B\) ra khỏi \(A\). Vì hai cạnh không kề nhau của \(B\) không tồn tại điểm chung trong \(A\) nên
+                        chi phí để cắt một cạnh phụ thuộc vào hai cạnh kề đã được cắt chưa.
                     </p>
                     <p>
-                        Phát biểu lại bài toán: Cho một đồ thị gồm \(m\) đỉnh, mỗi đỉnh có thể chọn làm đỉnh đặc biệt hoặc
-                        đỉnh thường. Xét đỉnh \(i\), nếu chọn \(i\) làm đỉnh đặc biệt thì tốn chi phí \(w_i\), nếu chọn \(i\)
-                        làm đỉnh thường thì phải chọn một đỉnh \(j\) và thêm cung \(\left(i, j\right)\) vào đồ thị với chi phí
-                        \(c_{i,j}\). Đồ thị tạo ra phải đảm bảo mỗi đỉnh phải có đường đi đến một đỉnh đặc biệt. Đưa ra chi
-                        phí nhỏ nhất có thể.
+                        Xét cạnh thứ \(i\) có hai đầu mút là \(C\), \(D\) (\(C\) giáp với cạnh liền trước, \(D\) giáp với cạnh liền sau).
+                        Tia \(CD\) cắt \(A\) tại \(F\), tia \(DC\) cắt \(A\) tại \(E\).
+                    </p>
+                    <img src="../images/steel_1.png" style="width: 630px;">
+                    <p>
+                        Ta thấy:
+                        nếu cắt \(CD\) sau cạnh liền trước sẽ giảm được \( \left| EC \right| \) chi phí,
+                        nếu cắt \(CD\) sau cạnh liền sau sẽ giảm được \( \left| DF \right| \) chi phí.
                     </p>
                     <p>
-                        Bài toán trên có thể được giải bằng thuật toán Prim. Ban đầu mỗi đỉnh là một cây khung với chi
-                        phí \(w_i\), sau khi thực hiện thuật toán ta được kết quả tối ưu.
+                        Bài toán tương đương: Cho một đồ thị có \(m\) đỉnh. Đỉnh \(i \left(1 < i \le m\right) \) có \(i - 1\)
+                        là đỉnh liền trước, đỉnh liền trước của \(1\) là \(m\). Đỉnh \(i \left(1 \le i < m\right) \) có \(i + 1\)
+                        là đỉnh liền sau, đỉnh liền sau của \(m\) là \(1\). Với mỗi đỉnh \(i\), gọi \(j\) là đỉnh liền sau
+                        của \(i\), ta phải thêm cung \( \left(i, j\right) \) với chi phí \(l_j\) hoặc cung \( \left(j, i\right) \)
+                        với chi phí \(r_i\). Đưa ra cách có chi phí lớn nhất sao cho đồ thị không có chu trình.
                     </p>
                     <p>
-                        \(w_i\) là độ dài của nhát cắt thứ \(i\). \(c_{i,j}\) là độ dài của
-                        nhát cắt thứ \(i\) sau khi cắt nhát thứ \(j\).
+                        Ta có thuật toán tham lam như sau: Với mỗi cặp đỉnh \(i, j\) (\(j\) liền sau \(i\)) chọn cung có chi phí
+                        lớn hơn để thêm vào. Nếu sau khi thêm đồ thị có chu trình, ta chỉ cần đảo một cạnh bất kì, tìm cạnh tối
+                        ưu nhất để đảo.
                     </p>
                 </div>
             </div>    
