@@ -1,0 +1,105 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">NKBUSD</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/NKBUSD/"><u>https://vn.spoj.com/problems/NKBUSD/</u></a>
+                    </div>
+
+                    <p>
+                        Sau khi \(k\) xe rời khỏi tuyến, gọi \(a_i\) là chỉ số ban đầu của xe thứ \(i\) ở trên tuyến \( \left(a_i < a_{i + 1}\right) \).
+                        Các xe được đánh số từ \(0\) đến \(n - 1\).
+                    </p>
+                    <p>
+                        Ví dụ: \(n = 5, k = 2\), các xe \(1, 4\) rời khỏi tuyến. Vậy \(a = \left\{ 0, 2, 3 \right\} \).
+                    </p>
+                    <p>
+                        Gọi \(d_{\text{init}}\) là khoảng cách giữa các xe lúc ban đầu, \(d\) là khoảng cách giữa các xe
+                        sau khi điều chỉnh, \(v_i\) là tốc độ của xe thứ \(i\) trong khoảng thời gian \(t\)
+                        \( \left( d_{\text{init}} = {s \over n}, d = {s \over {n - k}} \right) \).
+                    </p>
+                    <p>
+                        \[ (i) ------- x --------(j) \]
+                        Nếu xe \(i\) đứng liền trước xe \(j\), hai xe cách nhau một đoạn bằng \(x\),
+                        điều kiện để sau khoảng \(t\) thời gian, hai xe cách nhau đúng \(d\) là
+                        \[ x - t\left( v_i - v_j \right) = d \]
+                        \[ \leftrightarrow v_j = v_i + {{d - x} \over t} \]
+                        Gọi \(f_i\) là khoảng cách từ \(a_0\) đến \(a_i\) lúc ban đầu
+                        \( \left(f_i = d_\text{init} \left(a_i - a_0\right) \right) \). Vận tốc của xe thứ \(i\)
+                        trong tuyến là \( v_i = {{di - f_i} \over {t}} \).
+                    </p>
+                    <p>
+                        Điều kiện để \(i\) không vượt qua \(j\) là \( t\left(v_i - v_j\right) \le x \)
+                        \[ \leftrightarrow v_i - v_j \le {x \over t} \]
+                        \[ \leftrightarrow {{x - d} \over t} \le {x \over t} \]
+                        Điều trên luôn đúng.
+                    </p>
+                    <p>
+                        Nhận thấy giá trị thực sự của vận tốc các xe không quan trọng, quan trọng là vận tốc tương đối giữa các xe (hệ quy chiếu gắn với xe đầu tiên trong tuyến).
+                        Điều kiện để tồn tại một cách thỏa \( v_\min \le v_i \le v_\max \) \(\forall i\) là
+                        \[ \max{v_i} - \min{v_i} \le v_\max - v_\min \]
+                        \[ \leftrightarrow {{\max{\left\{di - f_i\right\}} - \min{\left\{di - f_i\right\}}} \over t} \le v_\max - v_\min \]
+                        \[ \leftrightarrow t \ge {{\max{\left\{di - f_i\right\}} - \min{\left\{di - f_i\right\}}} \over {v_\max - v_\min}} \]
+                        Vậy \( t_\min = {{\max{\left\{di - f_i\right\}} - \min{\left\{di - f_i\right\}}} \over {v_\max - v_\min}} \).
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
