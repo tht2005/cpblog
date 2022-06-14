@@ -1,0 +1,82 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">NKGOLF</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/NKGOLF/"><u>https://vn.spoj.com/problems/NKGOLF/</u></a>
+                    </div>
+
+                    <p>
+                        Một hình chữ nhật (hcn) gọi là đẹp nếu nó thỏa mãn yêu cầu đề bài (các hàng, cột không giảm).
+                        Xét một hcn đẹp, ta thấy mọi hcn con kích thước \(2 \times 2\) đều đẹp.
+                        Ngược lại, nếu một hcn có mọi hcn con kích thước \(2 \times 2\) đẹp thì nó cũng đẹp.
+                    </p>
+                    <p>
+                        Ta có \(b_{i,j} = 1\) nếu hcn \(2 \times 2\) có góc trái trên là \( \left(i,j\right) \) đẹp,
+                        ngược lại \(b_{i,j} = 0\). Bài toán trở thành tìm hcn con "toàn 1" có diện tích lớn nhất.
+                        Làm tương tự như bài <a href="https://vn.spoj.com/problems/QBRECT/">QBRECT</a>.
+                    </p>
+                    <p>
+                        Việc còn lại là xét các hcn con kích thước \(1 \times x\) và \(x \times 1\).
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

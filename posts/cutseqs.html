@@ -1,0 +1,114 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">CUTSEQS</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://vn.spoj.com/problems/CUTSEQS/"><u>https://vn.spoj.com/problems/CUTSEQS/</u></a>
+                    </div>
+
+                    <p>
+                        Dễ thấy không có cách chia khi và chỉ khi tồn tại vị trí \(i\) sao cho \(a_i > M\).
+                    </p>
+                    <p>
+                        Gọi \(f_i\) là cách chia \(i\) số đầu thành các nhóm sao cho tổng các số lớn nhất trong các nhóm là nhỏ nhất.
+                    </p>
+                    <p>
+                        \[ \left\{ \matrix{ {f_0 = 0} \cr {f_i = \min\limits_{0 \le j < i, \sum\limits_{k = j + 1}^{i}{a_k}\le M} \left\{ {f_j + \max\limits_{k = j + 1}^{i} {a_k}} \right\}} } \right. \]
+                    </p>
+
+                    <p>
+                        Để tính \(f_i\) có thể duyệt mọi \(j\) bé hơn \(i\) nhưng ta cần thuật toán hiệu quả hơn.
+                    </p>
+                    <p>
+                        Gọi \(j\) là vị trí nhỏ nhất sao cho tổng từ \(j + 1\) đến \(i\) không vượt quá \(M\). Gọi \(Q\) là
+                        tập các vị trí \(k \left(j < k \le i\right) \) thỏa mãn \(a_k\) lớn hơn mọi số từ \(k + 1\) đến \(i\).
+                    </p>
+                    <p>
+                        Ta có thể dễ dàng tính tập \(Q\) như sau:
+                        <pre>
+deque< int > Q; 
+for(int i = 1, j = 0; i <= n; ++i) {
+    // tính j cho mỗi i
+    while(tổng từ (j + 1) đến i lớn hơn M) {
+        ++j;
+    }
+    // loại các vị trí <= j
+    while(!Q.empty() && Q.front() <= j) {
+        Q.pop_front();
+    }
+    while(!Q.empty() && a[Q.back()] <= a[i]) {
+        Q.pop_back();
+    }
+    Q.push_back(i);
+    // tập Q của vị trí i đã được tính
+}
+                        </pre>
+                    </p>
+
+                    <p>
+                        Xét các vị trí trong \(Q\) làm vị trí lớn nhất của nhóm, ta có công thức sau:
+                        \[ f_i = \min\left\{ \matrix{{\min\limits_{j \le k < Q_0}{f_k} + a_{Q_0} = f_j + a_{Q_0}} \cr
+                        {\min\limits_{Q_i \le k < Q_{i + 1}}{f_k} + a_{Q_{i + 1}} = f_{Q_i} + a_{Q_{i + 1}} }} \right. \]
+                        Ta có thể dùng set, heap hoặc segment tree để duy trì các giá trị \(f_{Q_i} + a_{Q_{i + 1}}\).
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
