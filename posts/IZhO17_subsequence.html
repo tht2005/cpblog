@@ -1,0 +1,99 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+    
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">IZhO17_subsequence</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://oj.uz/problem/view/IZhO17_subsequence"><u>https://oj.uz/problem/view/IZhO17_subsequence</u></a>
+                    </div>
+                    <p>
+                        Ta có ý tưởng quy hoạch động: \(f_i\) là độ dài của dãy con dài nhất kết thúc tại \(i\). Công thức là
+                        \[f_i = \max\limits_{j < i, a_j \& a_i = k_i} \left(f_j\right) + 1\]
+                    </p>
+                    <p>Ta có các hướng tiếp cận sau:</p>
+                    <ul>
+                        <li>Sử dụng hai vòng lặp \(i, j\) để tính mọi \(f_i\), độ phức tạp là \(O\left(n^2\right)\).</li>
+                        <li>
+                            Để tính \(f_i\) (tính các \(f_i\) theo thứ tự tăng dần \(i\)), ta sử dụng một mảng \(val\).
+                            \(val_x\) là giá trị lớn nhất trong các \(f_j\) thỏa mãn \(j < i, a_j = x\). Từ đó ta chỉnh lại công thức tính:
+                            \[f_i = \max\limits_{a_i \& j = k_i} \left(val_j\right) + 1\]
+                            Sau khi tính \(f_i\) xong phải cập nhật cho \(val_{a_i}\). Độ phức tạp là \(O\left(n.{2^{20}}\right)\).
+                        </li>
+                        <li>
+                            Tương tự với cách hai, để tính \(f_i\), ta sử dụng một mảng hai chiều \(val\).
+                            \(val_{y, j}\) là \(f_x\) lớn nhất thỏa mãn \(x < i, y \& a_x = j\).
+                            Vậy \(f_i = val_{a_i, k_i} + 1\). Sau khi tính \(f_i\) xong, ta duyệt các \(c\) để cập nhật
+                            cho \(val_{c, bitcount\left(a_i \& c\right)}\). Độ phức tạp là \(O\left(n.{2^{20}}\right)\).
+                        </li>
+                        <li>
+                            Hướng tiếp cận cuối cùng và là một trong những cách AC được bài này. Đó là kết hợp cả hai cách 2 và 3.
+                            Ta sử dụng mảng \(val\), \(val_{x, y, z}\) là \(f_j\) lớn nhất mà "10 bit đầu của \(a_j\) bằng x,
+                            tức là \(\left\lfloor {{{a_j} \over {2^{10}}}} \right\rfloor = x\)" và
+                            "số bit 1 của giá trị "y and với 10 bit cuối của a_j" là z, tức là
+                            \(bitcount\left(\left(a_j \mod {2^{10}}\right) \& y\right) = z\)".
+                            Gọi \(l = \left\lfloor {{{a_i} \over {2^{10}}}} \right\rfloor\),
+                            \(r = a_i \mod {2^{10}}\).
+                            Vậy \(f_i = \max\limits_{j = 0}^{{2^{10}} - 1}\left(val_{j, r, k_i - bitcount\left( l \& j \right)}\right) + 1\).
+                            Sau khi tính \(f_i\) xong ta cập nhật \(val\) như sau: duyệt các j trong đoạn \( \left[0, 2^{10}\right) \),
+                            cập nhật \(val_{l, j, bitcount\left(r \& j\right)}\).
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
