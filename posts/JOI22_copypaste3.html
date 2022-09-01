@@ -1,0 +1,121 @@
+<!--
+    name: ab
+    version: 1.0
+    author: tht2005
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>cp notes</title>
+
+    <!--Poppins font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Dosis font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!---->
+
+    <!--Roboto font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!---->
+
+    <!-- MathJax -->
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            },
+            "HTML-CSS": { availableFonts: ["TeX"] }
+        });
+    </script>
+    <!---->
+</head>
+<body>
+
+    <div class="blog">
+        <div class="blog-content">
+            <div class="post">
+                <div class="post-title">
+                    <h1 class="post-title-name">JOI22_copypaste3</h1>
+                </div>
+                <hr style="width: 50px; color: white; background-color: white;">
+                <div class="post-content">
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Nguồn:</span>
+                        <a class="prob-link" href="https://oj.uz/problem/view/JOI22_copypaste3"><u>https://oj.uz/problem/view/JOI22_copypaste3</u></a>
+                    </div>
+                    <div class="origin">
+                        <span style="color: white; font-weight: normal;">Sol gốc:</span>
+                        <a class="prob-link" href="https://www.ioi-jp.org/camp/2022/2022-sp-tasks/contest2/copypaste3-review.pdf"><u>https://www.ioi-jp.org/camp/2022/2022-sp-tasks/contest2/copypaste3-review.pdf</u></a>
+                    </div>
+                    <p>
+                        Khi tiếp cận bài toán này theo hướng quy hoạch động, ta có thể hình dung ra một hàm như sau:
+                        \(f(a, b)\) là chi phí nhỏ nhất để đạt được \(x = a\) và \(y = b\). Từ trạng thái \((a, b)\) (có
+                        \(x = a\), \(y = b\)), ta có thể đi đến \((a + c, b)\), \((\emptyset, a)\) và \((a + b, b)\) sử dụng
+                        3 thao tác đề cho.
+                    </p>
+                    <p>
+                        Với hướng tiếp cận trên thì độ phức tạp quá lớn bởi vì có tận \(26^i\) xâu có độ dài \(i\). Nhưng ta chỉ cần
+                        xét các trạng thái \((a, b)\) mà \(a\) và \(b\) đều bằng một đoạn con liên tiếp của \(S\).
+                    </p>
+                    <p>
+                        Từ đó dễ dàng giải quyết subtask 2, gọi \(f(i, j)\) là chỉ phí nhỏ nhất để \(x\) có độ dài \(i\),
+                        \(y\) có độ dài \(j\).
+                    </p>
+                    <p>
+                        Do \(x\), \(y\) phải bằng một đoạn con liên tiếp của \(S\), gọi \(f(i, j)\) là chi phí nhỏ nhất để \(x\) bằng \(S[i:j]\)
+                        (đoạn con liên tiếp từ \(i\) đến \(j\) của \(S\)). Để xây dựng \(x\) bằng \(S[i:j]\) ta sẽ dùng hai thao tác 1 và 3. Khi
+                        đó ta cần tạo ra một xâu \(y\) (một đoạn con liên tiếp của \(S[i:j]\)) tối ưu. Ví dụ \(S[i:j]\) = "ababaababb" (phần nằm trên đường kẻ màu đỏ)
+                        và \(y\) = "bab".
+                    </p>
+                    <img src="../images/JOI22_copypaste3_1.png">
+                    <p>
+                        Khi đó ta có các cách để tạo ra xâu \(S[i:j]\):
+                        <ul>
+                            <li>Kí tự \(S[i]\) được thêm vào bằng thao tác 1, tức là \(f(i, j)\)\(=\)\(f(i + 1, j)\)\(+\)\(A\).</li>
+                            <li>Kí tự \(S[j]\) được thêm vào bằng thao tác 1, tức là \(f(i, j)\)\(=\)\(f(i, j - 1)\)\(+\)\(A\).</li>
+                            <li>
+                                Làm cho \(x\) bằng \(s[z:t]\) với chi phí \(f(z, t)\), sau đó chuyển sang \(y\) với chi phí \(B\),
+                                xây dựng xâu \(S[i:j]\) từ trái sang, ưu tiên sử dụng thao tác 3, nếu không dùng được thì mới sử dụng thao tác 1.
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Từ công thức trên ta có lời giải với độ phức tạp \(O(n^5)\). Ta thấy để tính \(f(i, j)\) ta phải
+                        duyệt các cặp \((z, t)\) nhưng nếu ta sử dụng \(f(z, t)\) cập nhật cho các \(f(i, j)\) \((i \le z \le t \le j)\) thì sẽ đạt
+                        được độ phức tạp \(O(n^4)\).
+                    </p>
+                    <p>
+                        Vì hàm quy hoạch động có xét hai chữ cái đầu được thêm vào từ thao tác 1, nên từ \(f(z, t)\)
+                        ta chỉ cần cập nhật cho các xâu mà chữ cái đầu và cuối đều được thêm vào từ thao tác 3, tức là
+                        các \(f(z, i)\) \((t < i)\). Đạt được độ phức tạp \(O(n ^ 3)\).
+                    </p>
+                    <p>
+                        Nếu ta chuẩn bị một mảng \(next[i, j]\) là \(k\) nhỏ nhất sao cho \(j < k\) và \(s[i:j] = s[k:(k + j - i)])\),
+                        để từ \(f(z, t)\) cập nhật đi thì độ phức tạp đạt được \(O({n^2} \log(n))\).
+                    </p>
+                    <p>
+                        Lưu ý khi tính mảng \(next\) mà sử dụng hash + map thì sẽ bị TLE subtask cuối, nên sử
+                        dụng thuật toán Z + kĩ thuật 2 con trỏ.
+                    </p>
+                </div>
+            </div>    
+        </div>
+    </div>
+
+</body>
+</html>
